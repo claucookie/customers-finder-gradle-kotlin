@@ -1,15 +1,11 @@
 package datasource
 
-import java.io.File
+import datasource.model.CustomerInfo
 
-class CustomersLocalDataSource {
+class CustomersLocalDataSource(val customersFileReader: CustomersFileReader) {
 
-    fun getAllCustomers(): MutableList<String> {
-        val customers = mutableListOf<String>()
-        File("customers.txt").forEachLine {
-            customers.add(it)
-        }
-        return customers
+    fun getAllCustomers(): MutableList<CustomerInfo> {
+        return customersFileReader.retrieveCustomers()
     }
 
 }

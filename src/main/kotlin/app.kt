@@ -1,9 +1,10 @@
-import datasource.CustomersLocalDataSource
+import domain.GetCustomersCloseToOfficeUseCase
+import domain.GetCustomersRequest
 
 fun main() {
-    // Read file
     print("- Reading customers file \n")
-    CustomersLocalDataSource().getAllCustomers().forEach {
-        print(it + "\n")
+    GetCustomersCloseToOfficeUseCase(GetCustomersRequest(100)).execute().forEach {
+        println(it)
     }
+
 }
